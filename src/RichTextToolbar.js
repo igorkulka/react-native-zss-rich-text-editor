@@ -126,12 +126,14 @@ export default class RichTextToolbar extends Component {
       <View
         style={[{ height: 50, backgroundColor: '#D3D3D3', alignItems: 'center' }, this.props.style]}
       >
+        <View style={{ width: 20, backgroundColor: '#f00' }} />
         <ListView
           horizontal
           contentContainerStyle={{ flexDirection: 'row' }}
           dataSource={this.state.ds}
           renderRow={(row) => this._renderAction(row.action, row.selected)}
         />
+        <View style={{ width: 20, backgroundColor: '#00f' }} />
       </View>
     );
   }
