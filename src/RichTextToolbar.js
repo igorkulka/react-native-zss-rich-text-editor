@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ListView, View, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { ListView, View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
 import { actions } from './const';
 
 const defaultActions = [
@@ -110,7 +110,7 @@ export default class RichTextToolbar extends Component {
         ]}
         onPress={() => this._onPress(action)}
       >
-        {icon ? <Image source={icon} style={{ tintColor: selected ? this.props.selectedIconTint : this.props.iconTint }} /> : null}
+        {icon ? <Image source={icon} style={{ tintColor: selected ? this.props.selectedIconTint : this.props.iconTint }} /> : <Text>{action.key || action}</Text>}
       </TouchableOpacity>
     );
   }
