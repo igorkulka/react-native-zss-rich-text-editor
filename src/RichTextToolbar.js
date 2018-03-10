@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ListView, View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native';
-import { actions } from './const';
+import { actions, messages } from './const';
 
 const defaultActions = [
   actions.insertImage,
@@ -179,6 +179,9 @@ export default class RichTextToolbar extends Component {
         if (this.props.onPressAddImage) {
           this.props.onPressAddImage();
         }
+        break;
+      case actions.hideKeyboard:
+        this.state.editor.blurContentEditor();
         break;
       default:
         Boolean(action.callback) && typeof action.callback === 'function' && action.callback();
