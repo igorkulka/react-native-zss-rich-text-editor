@@ -59,7 +59,7 @@ export default class RichTextToolbar extends Component {
   }
 
   getRows(actions, selectedItems) {
-    return actions.map((action) => { return { action, selected: selectedItems.includes(action) }; });
+    return actions.map((action) => { return { action, selected: selectedItems.includes(action.key || action) }; });
   }
 
   componentDidMount() {
@@ -103,7 +103,7 @@ export default class RichTextToolbar extends Component {
     const icon = this._getButtonIcon(action);
     return (
       <TouchableOpacity
-        key={action}
+        key={action.key || action}
         style={[
           { height: 50, width: 50, justifyContent: 'center' },
           selected ? this._getButtonSelectedStyle() : this._getButtonUnselectedStyle()
@@ -137,7 +137,7 @@ export default class RichTextToolbar extends Component {
   }
 
   _onPress(action) {
-    switch (action) {
+    switch (action.key || action) {
       case actions.setBold:
       case actions.setItalic:
       case actions.insertBulletsList:
@@ -161,7 +161,8 @@ export default class RichTextToolbar extends Component {
       case actions.setHR:
       case actions.setIndent:
       case actions.setOutdent:
-        this.state.editor._sendAction(action);
+        this.state.editor._sendAction(action.key || action);
+        Boolean(action.callback) && typeof action.callback === 'function' && action.callback();
         break;
       case actions.insertLink:
         this.state.editor.prepareInsert();
