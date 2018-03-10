@@ -31,10 +31,10 @@ export default class RichTextToolbar extends Component {
     actions: PropTypes.array,
     onPressAddLink: PropTypes.func,
     onPressAddImage: PropTypes.func,
-    selectedButtonStyle: PropTypes.object,
+    selectedButtonStyle: PropTypes.any,
     iconTint: PropTypes.any,
     selectedIconTint: PropTypes.any,
-    unselectedButtonStyle: PropTypes.object,
+    unselectedButtonStyle: PropTypes.any,
     renderAction: PropTypes.func,
     iconMap: PropTypes.object,
   };
@@ -110,7 +110,7 @@ export default class RichTextToolbar extends Component {
         ]}
         onPress={() => this._onPress(action)}
       >
-        {icon ? <Image source={icon} style={{ tintColor: selected ? this.props.selectedIconTint : this.props.iconTint }} /> : <Text>{action.key || action}</Text>}
+        {icon ? <Image source={icon} style={[{ tintColor: selected ? this.props.selectedIconTint : this.props.iconTint }, { height: 24, width: 24 }]} /> : <Text>{action.key || action}</Text>}
       </TouchableOpacity>
     );
   }
@@ -124,7 +124,7 @@ export default class RichTextToolbar extends Component {
   render() {
     return (
       <View
-        style={[{ height: 50, backgroundColor: '#D3D3D3', alignItems: 'center' }, this.props.style]}
+        style={[{ height: 50, backgroundColor: '#D3D3D3', alignItems: 'flex-start' }, this.props.style]}
       >
         <View style={{ width: 20, backgroundColor: '#f00' }} />
         <ListView

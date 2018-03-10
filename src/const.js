@@ -1,17 +1,9 @@
 export const actions = {
   enableOnChange: 'ENABLE_ON_CHANGE',
-  setTitleHtml: 'SET_TITLE_HTML',
   setContentHtml: 'SET_CONTENT_HTML',
-  getTitleHtml: 'GET_TITLE_HTML',
-  getTitleText: 'GET_TITLE_TEXT',
-  toggleTitle: 'TOGGLE_TITLE',
-  hideTitle: 'HIDE_TITLE',
-  showTitle: 'SHOW_TITLE',
   getContentHtml: 'GET_CONTENT_HTML',
   getSelectedText: 'GET_SELECTED_TEXT',
-  blurTitleEditor: 'BLUR_TITLE_EDITOR',
   blurContentEditor: 'BLUR_CONTENT_EDITOR',
-  focusTitle: 'FOCUS_TITLE',
   focusContent: 'FOCUS_CONTENT',
 
   setBold: 'bold',
@@ -40,9 +32,7 @@ export const actions = {
   setHR: 'horizontalRule',
   setIndent: 'indent',
   setOutdent: 'outdent',
-  setTitlePlaceholder: 'SET_TITLE_PLACEHOLDER',
   setContentPlaceholder: 'SET_CONTENT_PLACEHOLDER',
-  setTitleFocusHandler: 'SET_TITLE_FOCUS_HANDLER',
   setContentFocusHandler: 'SET_CONTENT_FOCUS_HANDLER',
   prepareInsert: 'PREPARE_INSERT',
   restoreSelection: 'RESTORE_SELECTION',
@@ -58,13 +48,10 @@ export const actions = {
 
 
 export const messages = {
-  TITLE_HTML_RESPONSE: 'TITLE_HTML_RESPONSE',
-  TITLE_TEXT_RESPONSE: 'TITLE_TEXT_RESPONSE',
   CONTENT_HTML_RESPONSE: 'CONTENT_HTML_RESPONSE',
   ZSS_INITIALIZED: 'ZSS_INITIALIZED',
   SCROLL: 'SCROLL',
   LOG: 'LOG',
-  TITLE_FOCUSED: 'TITLE_FOCUSED',
   CONTENT_FOCUSED: 'CONTENT_FOCUSED',
   SELECTION_CHANGE: 'SELECTION_CHANGE',
   CONTENT_CHANGE: 'CONTENT_CHANGE',

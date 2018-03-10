@@ -875,13 +875,10 @@
 
 			zss_editor.init = function() {
 
-				disableLineBreakIfNecessary('zss_editor_title');
 				disableLineBreakIfNecessary('zss_editor_content');
 
-				setupTouchEndEnableEditing('zss_editor_title');
 				setupTouchEndEnableEditing('zss_editor_content');
 
-				clearHtmlIfTextIsEmpty('zss_editor_title');
 				clearHtmlIfTextIsEmpty('zss_editor_content');
 
 				$(document).on('selectionchange',function(e){
@@ -908,13 +905,11 @@
 					}
 				});
 
-				setupTouchEndFocus('zss_editor_title');
 				setupTouchEndFocus('zss_editor_content');
 
 				setCurrentEditingLinkOnTouch();
 				preventLinkFollowingOnTouch();
 
-				whenPastingInsertAsPlainText('zss_editor_title');
 				whenPastingInsertAsPlainText('zss_editor_content');
 
 				zss_editor.focusContent();
@@ -1009,10 +1004,6 @@
 						element.empty();
 					}
 				});
-			}
-
-			zss_editor.setTitlePlaceholder = function(placeholder) {
-				setPlaceholder('zss_editor_title', placeholder);
 			}
 
 			zss_editor.setContentPlaceholder = function(placeholder) {
@@ -1367,15 +1358,6 @@
 				editor.html(html);
 			}
 
-			zss_editor.setTitleHTML = function(html) {
-				setHTML('zss_editor_title', html);
-			}
-
-			zss_editor.toggleTitle = function() {
-				$('#zss_editor_title').toggle();
-				$('#separatorContainer').toggle();
-			}
-
 			zss_editor.enableOnChange = function() {
 				$('#zss_editor_content').on('input', function(){
 					WebViewBridge.send(JSON.stringify({
@@ -1383,16 +1365,6 @@
 						data: {content: getHtml("zss_editor_content")}
 					}))
 				});
-			}
-
-			zss_editor.hideTitle = function() {
-				$('#zss_editor_title').hide();
-				$('#separatorContainer').hide();
-			}
-
-			zss_editor.showTitle = function() {
-				$('#zss_editor_title').show();
-				$('#separatorContainer').show();
 			}
 
 			zss_editor.setContentHTML = function(html) {
@@ -1440,16 +1412,8 @@
 				return h;
 			}
 
-			zss_editor.getTitleHTML = function() {
-				return getHtml("zss_editor_title");
-			}
-
 			zss_editor.getContentHTML = function() {
 				return getHtml("zss_editor_content");
-			}
-
-			zss_editor.getTitleText = function() {
-				return $('#zss_editor_title').text();
 			}
 
 			zss_editor.getContentText = function() {
@@ -1575,10 +1539,6 @@
 				$('#zss_editor_content').focus();
 			}
 
-			zss_editor.focusTitle = function() {
-				$('#zss_editor_title').focus();
-			}
-
 			zss_editor.focusEditor = function(editorId) {
 
 				// the following was taken from http://stackoverflow.com/questions/1125292/how-to-move-cursor-to-end-of-contenteditable-entity/3866442#3866442
@@ -1591,11 +1551,6 @@
 				selection.removeAllRanges();
 				selection.addRange(range);
 				editor.focus();
-			}
-
-
-			zss_editor.blurTitleEditor = function() {
-				$('#zss_editor_title').blur();
 			}
 
 			zss_editor.blurContentEditor = function() {
@@ -1621,12 +1576,6 @@
 			function addFocusEvent(editorId, callbackHandler) {
 				var editor = $('#' + editorId);
 				editor.focus(callbackHandler);
-			}
-
-			zss_editor.setTitleFocusHandler = function() {
-				addFocusEvent('zss_editor_title', function() {
-					WebViewBridge.send(JSON.stringify({type: 'TITLE_FOCUSED'}))
-				});
 			}
 
 			zss_editor.setContentFocusHandler = function() {
@@ -1701,18 +1650,6 @@
 				box-sizing: border-box;
 			}
 
-			div.zss_editor_title {
-				font-family: 'Helvetica Neue Light', sans-serif;
-				font-size: 23px;
-				line-height: 31px;
-				color: #2d4150;
-			}
-
-			#zss_editor_title {
-				padding-left: 10px;
-				padding-right: 10px;
-			}
-
 			[placeholder]:empty:before {
 				content: attr(placeholder);
 				color: #e0e0e0;
@@ -1744,8 +1681,6 @@
 
 	<body>
 		<!-- ZSSRichTextEditor Editable Content -->
-		<div id="zss_editor_title" class="zss_editor_title" contenteditable="true" placeholder="" disableLineBreaks="true"></div>
-		<div id="separatorContainer"><hr></div>
 		<div id="zss_editor_content" class="zss_editor_content" contenteditable="true" placeholder=""></div>
 		<div id="zss_editor_footer"></div>
 	</body>
