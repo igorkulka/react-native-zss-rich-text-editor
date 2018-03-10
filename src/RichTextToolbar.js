@@ -129,6 +129,7 @@ export default class RichTextToolbar extends Component {
         <View style={{ width: 20, backgroundColor: '#f00' }} />
         <ListView
           horizontal
+          showsHorizontalScrollIndicator={false}
           contentContainerStyle={{ flexDirection: 'row' }}
           dataSource={this.state.ds}
           renderRow={(row) => this._renderAction(row.action, row.selected)}
